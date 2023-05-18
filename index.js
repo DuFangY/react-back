@@ -82,7 +82,7 @@ app.use("/api/analyse", postRoutes)
 
 app.get('*', (req, res) => {
     // res.sendFile(path.join(__dirname, 'public', 'index.html'));
-    res.sendFile('test')
+    res.send('test')
   });
 
 app.listen(8800, () => {
