@@ -12,7 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const app = express()
 
-app.use(express.static('public'))
+// app.use(express.static('public'))
 
 //中间件 转json
 app.use(express.json({ limit: '50mb' }))
@@ -81,7 +81,8 @@ app.use("/api/posts", postRoutes)
 app.use("/api/analyse", postRoutes)
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    // res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile('test')
   });
 
 app.listen(8800, () => {
