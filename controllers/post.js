@@ -84,7 +84,6 @@ export const updatePost = (req, res) => {
         ]
         db.query(sqlStr, [...values,postId,userInfo.id], (err, data) => {
             if (err) return res.status(500).json(err)
-            // console.log(data)
             return res.status(200).json('文章更新成功！')
         })
 
