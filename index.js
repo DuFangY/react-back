@@ -83,9 +83,9 @@ app.use("/api/posts", postRoutes)
 app.use("/api/analyse", postRoutes)
 
 app.get('*', (req, res) => {
-    console.log(path.join(__dirname, 'public', 'index.html'))
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-    // res.send('test')
+    // console.log(path.join(__dirname, 'public', 'index.html'))
+    // res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.send('没有页面')
   });
 
 app.listen(8800, () => {
