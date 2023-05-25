@@ -21,8 +21,8 @@ app.use(cookieParser())
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        // cb(null, '../client/public/upload')
-        cb(null, '../react-front/public/upload')
+        cb(null, '../client/public/upload')
+        // cb(null, '../react-front/public/upload')
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + "-" + file.originalname)
@@ -57,6 +57,7 @@ app.post('/api/upload', function (req, res) {
             return res.status(403).json(err)
         }
         const file = req.file
+        console.log(file)
         if (file !== undefined)
             return res.status(200).json(file.filename)
         else {
@@ -82,8 +83,9 @@ app.use("/api/posts", postRoutes)
 app.use("/api/analyse", postRoutes)
 
 app.get('*', (req, res) => {
-    // res.sendFile(path.join(__dirname, 'public', 'index.html'));
-    res.send('test')
+    console.log(path.join(__dirname, 'public', 'index.html'))
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    // res.send('test')
   });
 
 app.listen(8800, () => {
