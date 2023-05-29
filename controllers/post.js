@@ -11,6 +11,14 @@ export const getPosts = (req, res) => {
         return res.status(200).json(data)
     })
 }
+export const getTimeRank = (req,res)=>{
+    // 执行日期排序查询
+  const sqlStr = 'SELECT `id`,`title` FROM posts ORDER BY date DESC';
+  db.query(sqlStr,(err, data) => {
+    if (err) return res.status(500).send(err)
+    return res.status(200).json(data)
+})
+}
 export const getPost = (req, res) => {
     const sqlStr = "SELECT p.id,`username`,`email`,`title`,`desc`,p.img,u.img AS userImg,`cat`,`date`,`watch` FROM users u JOIN posts p ON u.id=p.uid WHERE p.id=?"
     db.query(sqlStr, [req.params.id], (err, data) => {
